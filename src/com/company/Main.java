@@ -24,7 +24,7 @@ Determinant.determinant();
             a = b;
             b = t;
         }
-        System.out.print("НОД= " +a);
+        System.out.println("НОД= " +a);
 
     }
     public static void User()
