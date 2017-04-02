@@ -7,10 +7,12 @@ import java.util.Scanner;
  */
 public class Main_menu {
     Scanner scanner = new Scanner(System.in);
+    int UserChoice = 0;
 
     public  void main_menu() {
         ask_user();
-        begin(recieve_result());
+        SetUserChoice();
+        begin(UserChoice);
     }
 
     protected void ask_user() {
@@ -18,12 +20,12 @@ public class Main_menu {
         System.out.println("Приветствую Вас в моем мини-наборе простеньких алгоритмов");
         System.out.println("Алгоритм Евклида - нажмите 1");
         System.out.println("Нахождение разности диагоналей матрицы - нажмите 2");
+        System.out.println("Подсчет доли положительных, отрицательных и нулевых чисел  - нажмите 3");
         System.out.println("*******************************************************");
     }
 
-    private int recieve_result(){
-        int UserChoice = scanner.nextInt();
-        return UserChoice;
+    private void SetUserChoice(){
+        UserChoice = scanner.nextInt();
     }
 
     private void begin(int choice) {
@@ -40,10 +42,15 @@ public class Main_menu {
                     SecondOption();
                     ContinueOrExit();
 
+                case 3:
+                    ThirdOption();
+                    ContinueOrExit();
+
                 default:
                     System.out.println("Повторите ввод");
                     isTrue = true;
-                    choice = recieve_result();
+                    SetUserChoice();
+                    choice = UserChoice;
             }
         }
     }
@@ -69,5 +76,10 @@ public class Main_menu {
     {
         Diagonal_Difference diagonal_difference = new Diagonal_Difference();
         diagonal_difference.main_menu();
+    }
+    protected void ThirdOption()
+    {
+        Plus_Minus_Zero plus_minus_zero = new Plus_Minus_Zero();
+        plus_minus_zero.main_menu();
     }
 }

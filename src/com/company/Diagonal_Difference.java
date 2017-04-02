@@ -18,16 +18,16 @@ public class Diagonal_Difference extends Main_menu{
         System.out.println("Для заполнения матрицы случайными числами нажмите 2");
         System.out.println("*******************************************************");
     }
-    protected void SetMatrixSize(){
+    private void SetMatrixSize(){
         System.out.println("Введите размерность матрицы");
         MatrixSize = scanner.nextInt();
     }
-    protected int GetMatrixSize() {
+    public int GetMatrixSize() {
         System.out.println("Размер квадратной матрицы: " + MatrixSize);
         return MatrixSize;
     }
 
-    protected void Random(){
+    private void Random(){
         int n = MatrixSize;
         Matrix = new int[n][n];
         for(int i=0; i < n; i++){
@@ -36,7 +36,7 @@ public class Diagonal_Difference extends Main_menu{
             }
         }
     }
-    protected void ShowMatrix(){
+    private void ShowMatrix(){
         System.out.println("Матрица: ");
         for(int i=0; i < MatrixSize; i++){
             for(int j=0; j < MatrixSize; j++){
@@ -45,7 +45,7 @@ public class Diagonal_Difference extends Main_menu{
             System.out.println();
         }
     }
-    protected void diagonal_difference()
+    private void diagonal_difference()
     {
         int n = MatrixSize;
         int Sum = 0;
@@ -61,7 +61,7 @@ public class Diagonal_Difference extends Main_menu{
             Sum = Sum * -1;
         System.out.println("Разность главной и побочной диагонали " +Sum);
     }
-    protected void Manually(){
+    private void Manually(){
         int n = MatrixSize;
         Matrix = new int[n][n];
         for(int i=0; i < n; i++){
