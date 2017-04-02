@@ -5,7 +5,7 @@ import java.util.Scanner;
 /**
  * Created by AlexPanteleev on 02.04.2017.
  */
-public class Euclid {
+public class Euclid extends Main_menu {
     private  void check(int a, int b){
         if (b>a){
             int t = b;
@@ -41,33 +41,18 @@ public class Euclid {
         System.out.println("Второе число " +b);
         NOD(a,b);
     }
-    public void main_menu(){
-        Scanner scanner = new Scanner(System.in);
+    protected void ask_user() {
         System.out.println("*******************************************************");
         System.out.println("Данная программа позволяет найти наибольший общий делитель двух чисел");
         System.out.println("Для самостоятельного ввода двух чисел нажмите 1");
         System.out.println("Для выобра случайных чисел в промежутке [0;100000) нажмите 2");
         System.out.println("*******************************************************");
-        boolean isTrue = true;
-        while (isTrue)
-        {
-            isTrue = false;
-
-            int choice = scanner.nextInt();
-            switch (choice) {
-                case 1:
-                    User();
-                    break;
-                case 2:
-                    Random();
-                    break;
-                default:
-                    System.out.println("Повторите ввод");
-                    isTrue = true;
-                    break;
-            }
-
-        }
-
     }
+    protected void FirstOption(){
+        User();
+    }
+    protected void SecondOption(){
+        Random();
+    }
+
 }
