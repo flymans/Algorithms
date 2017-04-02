@@ -6,43 +6,83 @@ import java.text.*;
 import java.math.*;
 import java.util.regex.*;
 
-public class Diagonal_Difference {
-    private static Scanner in = new Scanner(System.in);
-    public static void main_menu()
-    {
+public class Diagonal_Difference extends Main_menu{
+    private int MatrixSize;
+    private int[][] Matrix;
 
+
+    protected void ask_user() {
+        System.out.println("*******************************************************");
+        System.out.println("Данная программа позволяет найти разность диагоналей матрицы");
+        System.out.println("Для самостоятельного ввода матрицы нажмите 1");
+        System.out.println("Для заполнения матрицы случайными числами нажмите 2");
+        System.out.println("*******************************************************");
+    }
+    protected void SetMatrixSize(){
+        System.out.println("Введите размерность матрицы");
+        MatrixSize = scanner.nextInt();
+    }
+    protected int GetMatrixSize() {
+        System.out.println("Размер квадратной матрицы: " + MatrixSize);
+        return MatrixSize;
     }
 
-    public  static void diagonal_difference() {
-
-        System.out.println("Введите размерность матрицы");
-        int n = in.nextInt();
-        int a[][] = new int[n][n];
-        int Sum = 0;
+    protected void Random(){
+        int n = MatrixSize;
+        Matrix = new int[n][n];
         for(int i=0; i < n; i++){
             for(int j=0; j < n; j++){
-                a[i][j] = -9 + (int)(Math.random()*19);
+                Matrix[i][j] = -9 + (int)(Math.random()*19);
             }
         }
-        System.out.println("Случайная матрица: ");
-        for(int i=0; i < n; i++){
-            for(int j=0; j < n; j++){
-                System.out.print(a[i][j]+"\t");
+    }
+    protected void ShowMatrix(){
+        System.out.println("Матрица: ");
+        for(int i=0; i < MatrixSize; i++){
+            for(int j=0; j < MatrixSize; j++){
+                System.out.print(Matrix[i][j]+"\t");
             }
             System.out.println();
         }
-
+    }
+    protected void diagonal_difference()
+    {
+        int n = MatrixSize;
+        int Sum = 0;
         for (int i=0; i<n; i++){
-            Sum -= a[i][n-1-i];
+            Sum -= Matrix[i][n-1-i];
             for (int j=0; j<n; j++){
                 if (i==j)
-                    Sum += a[i][j];
+                    Sum += Matrix[i][j];
 
             }
         }
-        if (Sum <0) {
+        if (Sum <0)
             Sum = Sum * -1;
-            System.out.println("Разность главной и побочной диагонали ");
+        System.out.println("Разность главной и побочной диагонали " +Sum);
+    }
+    protected void Manually(){
+        int n = MatrixSize;
+        Matrix = new int[n][n];
+        for(int i=0; i < n; i++){
+            for(int j=0; j < n; j++){
+                System.out.format("Введите целое значение элемента Матрица[%d][%d]%n",i+1,j+1);
+                int a = scanner.nextInt();
+                Matrix[i][j] += a;
+            }
         }
+    }
+
+    protected void SecondOption(){
+        SetMatrixSize();
+        Random();
+        ShowMatrix();
+        diagonal_difference();
+    }
+    protected void FirstOption(){
+        SetMatrixSize();
+        Manually();
+        ShowMatrix();
+        diagonal_difference();
     }
 }

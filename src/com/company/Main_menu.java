@@ -51,6 +51,7 @@ public class Main_menu {
         System.out.println("*******************************************************");
         System.out.println("Вернуться назад - нажмите 0");
         System.out.println("Возвращение в главное меню - нажмите 9");
+        System.out.println("Для выхода из программы - нажмите что-то еще");
         int choice = scanner.nextInt();
         if (choice == 0)
             main_menu();
@@ -66,6 +67,7 @@ public class Main_menu {
     }
     protected void SecondOption()
     {
-
+        Diagonal_Difference diagonal_difference = new Diagonal_Difference();
+        diagonal_difference.main_menu();
     }
 }
